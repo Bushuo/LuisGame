@@ -11,6 +11,5 @@ function keyPressed() {
 		snake.dir(-1,0);
 	} else if(keyCode === ESCAPE) {
         running = !running;
-        console.log(running);
     }
 };
