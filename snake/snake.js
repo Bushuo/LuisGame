@@ -21,20 +21,24 @@ Snake = function() {
     }
 
 	this.update = function() {
+		if(!running) {
+			return;
+		}
+		this.death();
         if(this.total === this.tail.length) {
             for(var i = 0; i < this.tail.length-1; i++) {
                 this.tail[i] = this.tail[i+1];
             }
         }
         this.tail[this.total-1] = createVector(this.x, this.y);
-        
+
 		this.x += this.xSpeed * scl;
         this.y += this.ySpeed * scl;
 
         this.x = constrain(this.x, 0, width-scl);
         this.y = constrain(this.y, 0, height-scl);
     };
-    
+
     this.eat = function(pos) {
         var d = dist(this.x, this.y, pos.x, pos.y);
         if(d < 1) {
