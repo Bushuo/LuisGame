@@ -4,6 +4,7 @@ Tank = function() {
     this.speed = 0;
     this.img;
     this.color;
+    this.health;
 
     this.preload = function(path) {
         this.img = loadImage(path);
@@ -24,5 +25,5 @@ Tank = function() {
     this.dir = function(posx, posy) {
         this.dir.x = posx;
         this.dir.y = posy;
-    }
+    };
 }

@@ -1,0 +1,20 @@
+html {
+    background: linear-gradient(to bottom,#EEEEEE, #DDDDDD);
+}
+div{
+    background: linear-gradient(to right, lightgrey, grey);
+}
+
+.wrapper {
+    width: 80%;
+    margin: auto;
+    margin-bottom: 50px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+canvas {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
