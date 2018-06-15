@@ -1,5 +1,4 @@
 /*
-	// TODO: each 5 snake length new Obstacle
 	// TODO: make the food more appealing
 	water melon, fish, strawberry
 	// TODO: snake shape is hexagon
@@ -21,7 +20,6 @@ function resetGame() {
 	snake.reset();
 }
 
-
 function setup() {
 	createCanvas(600,600);
 	frameRate(10);
@@ -30,7 +28,6 @@ function setup() {
 	obstacles.push(new Obstacle());
 	food.pickLocation();
 	resetGame();
-
 
 	// UI
 	var resetButton	= document.createElement("button");
@@ -84,10 +81,6 @@ function draw() {
 };
 
 // debugging area
-/*var spawnObsManually = function () {
-	obs.reset();
-	obs.fall();
-};*/
 
 function mousePressed() {
 };
