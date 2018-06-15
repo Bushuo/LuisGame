@@ -1,6 +1,7 @@
 Food = function() {
   this.pos;
 
+  // chooses a random location for the food to appear
   this.pickLocation = function () {
     let cols = floor(width/scl);
     let rows = floor(height/scl);

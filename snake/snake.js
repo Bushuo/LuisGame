@@ -31,9 +31,6 @@ Snake = function() {
 	// update the tail array
 	// check for out of gamefield
 	this.update = function() {
-		if(!running) {
-			return;
-		}
 		this.selfKill();
 	    if(this.total === this.tail.length) {
 	        for(var i = 0; i < this.tail.length-1; i++) {
@@ -62,13 +59,13 @@ Snake = function() {
 
 	// display the snake
 	this.show = function() {
-		fill(230,230,230);
+		fill(230);
         rect(this.x, this.y, scl, scl);
         for(var i = 0; i < this.tail.length; i++) {
             fill(rainbow[i%rainbow.length]);
             rect(this.tail[i].x, this.tail[i].y, scl, scl);
         }
-		fill(230,230,230);
+		fill(51);
 		textSize(scl);
 		text(this.total, scl, scl+10);
 	};

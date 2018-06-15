@@ -5,9 +5,15 @@ Obstacle = function() {
     this.shadowSize = 0;
     this.isSpawned = false;
     this.isFalling = false;
+    this.shadowColor = 240;
 
+    // display the obstacle
     this.show = function () {
-        fill(70)
+        /*
+        *   from 240 to 51 in shadowSize steps
+        *   240 - ((240 - 51) / (shadowSize + 1))
+        */
+        fill(this.shadowColor);
         noStroke();
         rect(this.posShadow.x, this.posShadow.y, this.shadowSize, this.shadowSize);
         stroke(0);
@@ -22,7 +28,9 @@ Obstacle = function() {
             this.reset();
         }
         if (this.shadowSize < scl*2 && this.isFalling) {
+            this.shadowColor -= ((240 - 51) / (scl * 2));
             this.shadowSize++;
+
         }
         else if (this.shadowSize === scl*2 && !this.isSpawned) {
             this.activate();
@@ -34,6 +42,7 @@ Obstacle = function() {
         }
     };
 
+    // makes the obstacle fall
     this.fall = function () {
         this.isFalling = true;
         let cols = floor(width/scl);
@@ -42,11 +51,13 @@ Obstacle = function() {
         this.posShadow.mult(scl);
     };
 
+    // gets called when obstacle finished falling
     this.activate = function () {
         this.pos = this.posShadow;
         this.isSpawned = true;
     };
 
+    // reset state to default
     this.reset = function () {
         this.pos.x = -100;
         this.pos.y = -100;
@@ -55,6 +66,7 @@ Obstacle = function() {
         this.posShadow.x = -100;
         this.posShadow.y = -100;
         this.shadowSize = 0;
+        this.shadowColor = 240;
 
         this.isSpawned = false;
         this.isFalling = false;
