@@ -15,7 +15,8 @@ Obstacle = function() {
         */
         fill(this.shadowColor);
         noStroke();
-        rect(this.posShadow.x, this.posShadow.y, this.shadowSize, this.shadowSize);
+        rect(this.posShadow.x, this.posShadow.y,
+             this.shadowSize, this.shadowSize);
         stroke(0);
         fill(200,200,200);
         rect(this.pos.x, this.pos.y, scl*2, scl*2);
@@ -47,7 +48,8 @@ Obstacle = function() {
         this.isFalling = true;
         let cols = floor(width/scl);
         let rows = floor(height/scl);
-        this.posShadow = createVector(floor(random(2,cols-2)),floor(random(2,rows-2)));
+        this.posShadow = createVector(floor(random(2,cols-2)),
+            floor(random(2,rows-2)));
         this.posShadow.mult(scl);
     };
 

@@ -14,7 +14,7 @@ function keyPressed() {
     }
 };
 
-var pauseGame = function() {
+function pauseGame() {
 	if (running) {
 		frameRate(0);
 		running = !running;

@@ -13,16 +13,30 @@ var scl = 20;
 var snake;
 var food;
 var obs;
+var resetButton;
 
 function setup() {
 	createCanvas(600,600);
 	frameRate(10);
 	snake = new Snake();
 	food = new Food();
-	food.pickLocation();
 	obs = new Obstacle();
+
+	food.pickLocation();
 	obs.reset();
+
+	// UI
+	resetButton	= document.createElement("button");
+	var cvs = document.querySelector(".p5Canvas");
+	insertAfter(cvs, resetButton);
+
+	resetButton.innerHTML = "reset";
+	resetButton.addEventListener("click", function() {
+		// restart game
+	});
 };
+
+
 
 function draw() {
 	background(240);
@@ -50,4 +64,8 @@ var spawnObsManually = function () {
 };
 
 function mousePressed() {
+}
+
+function insertAfter(referenceNode, newNode) {
+    referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
 }
