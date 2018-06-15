@@ -1,6 +1,4 @@
 /*
-	// TODO: button for resetting
-	// TODO: slider for start frameRate
 	// TODO: each 5 snake length new Obstacle
 	// TODO: make the food more appealing
 	water melon, fish, strawberry
@@ -13,7 +11,8 @@ var scl = 20;
 var snake;
 var food;
 var obs;
-var resetButton;
+var slider;
+var obstacles = [];
 
 function setup() {
 	createCanvas(600,600);
@@ -26,17 +25,27 @@ function setup() {
 	obs.reset();
 
 	// UI
-	resetButton	= document.createElement("button");
+	var resetButton	= document.createElement("button");
 	var cvs = document.querySelector(".p5Canvas");
-	insertAfter(cvs, resetButton);
-
 	resetButton.innerHTML = "reset";
 	resetButton.addEventListener("click", function() {
 		// restart game
 	});
+
+	var sliderdiv = document.createElement("div");
+ 	slider = document.createElement("input");
+	slider.type = "range";
+	slider.min = "1";
+	slider.max = "10";
+	slider.value = "10";
+	slider.oninput = function() {
+		frameRate(int(slider.value));
+	}
+
+	insertAfter(cvs, sliderdiv);
+	sliderdiv.appendChild(slider);
+	insertAfter(cvs, resetButton);
 };
-
-
 
 function draw() {
 	background(240);
@@ -64,8 +73,8 @@ var spawnObsManually = function () {
 };
 
 function mousePressed() {
-}
+};
 
 function insertAfter(referenceNode, newNode) {
     referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
-}
+};
