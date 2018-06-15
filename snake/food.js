@@ -7,4 +7,9 @@ Food = function() {
     food.pos = createVector(floor(random(cols)), floor(random(rows)));
     this.pos.mult(scl);
   }
+
+  this.show = function() {
+    fill(255, 0, 100);
+  	rect(food.pos.x, food.pos.y, scl, scl);
+  }
 }

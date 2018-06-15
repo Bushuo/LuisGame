@@ -17,6 +17,5 @@ function draw() {
 	}
 	snake.update();
 	snake.show();
-	fill(255, 0, 100);
-	rect(food.pos.x, food.pos.y, scl, scl);
+	food.show();
 };

@@ -56,6 +56,9 @@ Snake = function() {
             fill(rainbow[i%rainbow.length]);
             rect(this.tail[i].x, this.tail[i].y, scl, scl);
         }
+		fill(230,230,230);
+		textSize(scl);
+		text(this.total, scl, scl+10);
 	};
 
 	this.dir = function(dirX, dirY) {
