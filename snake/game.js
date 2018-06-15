@@ -10,19 +10,27 @@
 var scl = 20;
 var snake;
 var food;
-var obs;
+//var obs;
 var slider;
 var obstacles = [];
+
+function resetGame() {
+	obstacles.forEach(function (obs) {
+		obs.reset();
+	});
+	snake.reset();
+}
+
 
 function setup() {
 	createCanvas(600,600);
 	frameRate(10);
 	snake = new Snake();
 	food = new Food();
-	obs = new Obstacle();
-
+	obstacles.push(new Obstacle());
 	food.pickLocation();
-	obs.reset();
+	resetGame();
+
 
 	// UI
 	var resetButton	= document.createElement("button");
@@ -30,6 +38,7 @@ function setup() {
 	resetButton.innerHTML = "reset";
 	resetButton.addEventListener("click", function() {
 		// restart game
+		obstacles = [];
 	});
 
 	var sliderdiv = document.createElement("div");
@@ -49,28 +58,36 @@ function setup() {
 
 function draw() {
 	background(240);
+
 	// update game logic
 	if(snake.eat(food.pos)){
 		food.pickLocation();
+		if(snake.total%5 === 0) {
+			obstacles.push(new Obstacle());
+		}
 	}
 	snake.update();
-	if(snake.total >= 5 && !obs.isSpawned && !obs.isFalling) {
-		obs.reset();
-		obs.fall();
-	}
-	obs.update();
+	obstacles.forEach(function (obs) {
+		if(snake.total >= 5 && !obs.isSpawned && !obs.isFalling) {
+			obs.reset();
+			obs.fall();
+		}
+		obs.update();
+	});
 
 	// show gameobjects
 	snake.show();
 	food.show();
-	obs.show();
+	obstacles.forEach(function(obs) {
+		obs.show();
+	});
 };
 
 // debugging area
-var spawnObsManually = function () {
+/*var spawnObsManually = function () {
 	obs.reset();
 	obs.fall();
-};
+};*/
 
 function mousePressed() {
 };

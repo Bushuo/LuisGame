@@ -15,8 +15,7 @@ Snake = function() {
             var pos = this.tail[i];
             var d = dist(this.x, this.y, pos.x, pos.y);
             if(d < 1) {
-				this.reset();
-				obs.reset();
+				resetGame();
             }
         }
     };

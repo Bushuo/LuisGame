@@ -25,8 +25,7 @@ Obstacle = function() {
     this.update = function () {
         let d = dist(this.pos.x, this.pos.y, snake.x, snake.y);
         if (d < 1) {
-            snake.reset();
-            this.reset();
+            resetGame();
         }
         if (this.shadowSize < scl*2 && this.isFalling) {
             this.shadowColor -= ((240 - 51) / (scl * 2));
