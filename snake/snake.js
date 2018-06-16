@@ -60,9 +60,13 @@ Snake = function() {
 	this.show = function() {
 		fill(230);
         rect(this.x, this.y, scl, scl);
-        for(var i = 0; i < this.tail.length; i++) {
-            fill(rainbow[i%rainbow.length]);
-            rect(this.tail[i].x, this.tail[i].y, scl, scl);
+        for(var i = this.tail.length-1, j = 0; i >= 0; i--, j++) {
+            fill(rainbow[i%rainbow.length]); // changes color of snake rect
+			let bodysize = scl - ((scl - scl/4)/this.tail.length) * j;
+			let bodypartPos = createVector();
+			bodypartPos.x = this.tail[i].x + (scl-bodysize*j)/2;
+			bodypartPos.y = this.tail[i].y + (scl-bodysize*j)/2;
+            rect(bodypartPos.x, bodypartPos.y, bodysize, bodysize);
         }
 		fill(51);
 		textSize(scl);

@@ -1,9 +1,9 @@
 /*
+	// TODO: snake tile is 1/n th smaller for each tile width
+	length = n
 	// TODO: make the food more appealing
 	water melon, fish, strawberry
 	// TODO: snake shape is hexagon
-	// TODO: snake tile is 1/n th smaller for each tile width
-	length = n
 */
 
 var scl = 20;
