@@ -9,7 +9,17 @@ function keyPressed() {
 		snake.dir(1,0);
 	} else if(keyCode === LEFT_ARROW && (snake.xSpeed !== 1 && snake.ySpeed !== 0)) {
 		snake.dir(-1,0);
-	} else if(keyCode === ESCAPE) {
-        running = !running;
+	} else if(keyCode === ESCAPE || keyCode === 32) {
+		pauseGame();
     }
 };
+
+function pauseGame() {
+	if (running) {
+		frameRate(0);
+		running = !running;
+	} else {
+		frameRate(10);
+		running = !running;
+	}
+}
